@@ -17,9 +17,9 @@
         <td> <input type="hidden"  name="command" value="create_location"  /> </td>
         <table style="background-color: #836ef8;margin-left:20px;margin-right: 20px " >
             <tr>
-                <td>From</td>
-                <td> <input type="text" name="street_from"  /> </td></tr>
-            <tr><td>To</td><td> <input type="text" name="street_to" /> </td></tr>
+                <td>Lat</td>
+                <td> <input type="text" name="lng"  /> </td></tr>
+            <tr><td>Lng</td><td> <input type="text" name="lat" /> </td></tr>
             <tr><td>   <input type="submit" name="submit" value="location_submit"  /> </td></tr>
         </table>
     </form>

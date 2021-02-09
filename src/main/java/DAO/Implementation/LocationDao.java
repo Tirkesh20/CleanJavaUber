@@ -11,7 +11,7 @@ import java.util.List;
 
     public class LocationDao extends DAO<Location> {
         @Override
-        public void delete() throws DaoException{
+        public void delete() throws DaoException  {
             String sql = "DELETE from location ";
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(sql);
@@ -36,7 +36,7 @@ import java.util.List;
 
         @Override
         public void insert(Location entity) throws DaoException {
-            String sql = "INSERT INTO location( street_from, street_to,req_status) VALUES (?,?,?);";
+            String sql = "INSERT INTO location( lat, lng,req_status) VALUES (?,?,?);";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
                 stmt.executeUpdate();
@@ -48,7 +48,7 @@ import java.util.List;
 
         @Override
         public void update(Location entity) throws DaoException {
-            String sql = "UPDATE location set street_from=?,street_to=?,req_status-? where id=?";
+            String sql = "UPDATE location set lat=?,lng=?,req_status-? where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
                 stmt.setInt(4,  entity.getId());
@@ -88,15 +88,15 @@ import java.util.List;
         private Location fetchResultSet(ResultSet resultSet) throws SQLException {
             Location location = new Location();
             location.setId(resultSet.getInt("id"));
-            location.setStreetFrom(resultSet.getDouble("street_from"));
-            location.setStreetTo((resultSet.getDouble("street_to")));
+            location.setLat(resultSet.getDouble("lat"));
+            location.setLng((resultSet.getDouble("lng")));
             location.setReqStatus(ReqStatus.valueOf(resultSet.getString("req_status")));
             return location;
         }
 
         private void fetchSet(PreparedStatement stmt, Location entity) throws SQLException {
-            stmt.setDouble(1,entity.getStreetFrom());
-            stmt.setDouble(2, entity.getStreetTo());
+            stmt.setDouble(1,entity.getLat());
+            stmt.setDouble(2, entity.getLng());
             stmt.setString(3,entity.getReqStatus().toString());
         }
     }

@@ -16,13 +16,12 @@ public class LocationCreate implements Command {
     public Page execute(HttpServletRequest request) throws ServiceException {
         Location location=new Location();
         HttpSession session= request.getSession();
-
         request.getSession();
         Page page=new Page();
-        Double streetFrom=Double.parseDouble(request.getParameter("street_from"));
-        Double streetTo=Double.parseDouble(request.getParameter("street_to"));
-        location.setStreetFrom(streetFrom);
-        location.setStreetTo(streetTo);
+        Double streetFrom=Double.parseDouble(request.getParameter("lat"));
+        Double streetTo=Double.parseDouble(request.getParameter("lng"));
+        location.setLat(streetFrom);
+        location.setLng(streetTo);
 
 
         location.setReqStatus(ReqStatus.WAITING);

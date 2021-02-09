@@ -6,13 +6,15 @@ create table account(
                         email varchar (20) not null ,
                         password varchar (50) not null,
                         user_type varchar (50) not null,
-                        PRIMARY KEY (id)
+                        location_id int ,
+                        PRIMARY KEY (id),
+                        FOREIGN KEY (location_id) REFERENCES location(id)
 );
 
 create table location(
                          id bigserial not null,
-                         street_from double not null ,
-                         street_to double not null,
+                         lat decimal not null ,
+                         lng decimal not null,
                          req_status varchar (50)not null,
                          PRIMARY KEY (id)
 );

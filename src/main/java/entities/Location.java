@@ -4,8 +4,8 @@ import entities.enums.ReqStatus;
 
 public class Location {
     private int id;
-    private double streetFrom;
-    private double streetTo;
+    private double lat;
+    private double lng;
     private ReqStatus reqStatus;
 
     public ReqStatus getReqStatus() {
@@ -24,26 +24,26 @@ public class Location {
         return id;
     }
 
-    public double getStreetTo() {
-        return streetTo;
+    public double getLng() {
+        return lng;
     }
-    public double getStreetFrom(){
-        return streetFrom;
+    public double getLat(){
+        return lat;
+    }
+    public void setLat(double lat){
+        this.lat = lat;
+    }
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
-    public void setStreetTo(double streetTo) {
-        this.streetTo = streetTo;
-    }
-    public void setStreetFrom(double streetFrom){
-        this.streetFrom = streetFrom;
-    }
 
     @Override
     public String toString() {
         return "Location{" +
                 "id=" + id +
-                ", streetName='" + streetFrom + '\'' +
-                ", streetNumber=" + streetTo +
+                ", streetName='" + lat + '\'' +
+                ", streetNumber=" + lng +
                 '}';
     }
 }
