@@ -11,8 +11,8 @@ create table account(
 
 create table location(
                          id bigserial not null,
-                         street_from varchar (50) not null,
-                         street_to varchar (50)not null,
+                         street_from double not null ,
+                         street_to double not null,
                          req_status varchar (50)not null,
                          PRIMARY KEY (id)
 );

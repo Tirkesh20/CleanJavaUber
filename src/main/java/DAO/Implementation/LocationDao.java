@@ -88,15 +88,15 @@ import java.util.List;
         private Location fetchResultSet(ResultSet resultSet) throws SQLException {
             Location location = new Location();
             location.setId(resultSet.getInt("id"));
-            location.setStreetFrom(resultSet.getString("street_from"));
-            location.setStreetTo((resultSet.getString("street_to")));
+            location.setStreetFrom(resultSet.getDouble("street_from"));
+            location.setStreetTo((resultSet.getDouble("street_to")));
             location.setReqStatus(ReqStatus.valueOf(resultSet.getString("req_status")));
             return location;
         }
 
         private void fetchSet(PreparedStatement stmt, Location entity) throws SQLException {
-            stmt.setString(1,entity.getStreetFrom());
-            stmt.setString(2, entity.getStreetTo());
+            stmt.setDouble(1,entity.getStreetFrom());
+            stmt.setDouble(2, entity.getStreetTo());
             stmt.setString(3,entity.getReqStatus().toString());
         }
     }

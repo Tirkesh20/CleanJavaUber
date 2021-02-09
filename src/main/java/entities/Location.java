@@ -4,8 +4,8 @@ import entities.enums.ReqStatus;
 
 public class Location {
     private int id;
-    private String streetFrom;
-    private String streetTo;
+    private double streetFrom;
+    private double streetTo;
     private ReqStatus reqStatus;
 
     public ReqStatus getReqStatus() {
@@ -24,17 +24,17 @@ public class Location {
         return id;
     }
 
-    public String getStreetTo() {
+    public double getStreetTo() {
         return streetTo;
     }
-    public String getStreetFrom(){
+    public double getStreetFrom(){
         return streetFrom;
     }
 
-    public void setStreetTo(String streetTo) {
+    public void setStreetTo(double streetTo) {
         this.streetTo = streetTo;
     }
-    public void setStreetFrom(String streetFrom){
+    public void setStreetFrom(double streetFrom){
         this.streetFrom = streetFrom;
     }
 

@@ -1,6 +1,7 @@
 package command;
 
 import command.Implementatiion.Account.*;
+import command.Implementatiion.Location.TaxiSubmit;
 import command.Implementatiion.Location.LocationCreate;
 import command.Implementatiion.Order.OrderCreate;
 import exceptions.ServiceException;
@@ -19,12 +20,13 @@ public class Factory implements Command {
             case "account_create": return new AccountCreate();
             case "account_update":return new AccountUpdate();
             case "logout":return new Logout();
-            case"meet":return new Meet();
-            default: return new Home();
             case "login":return new AccountRead();
             case"select":return new AccountSelect();
             case "create_location":return new LocationCreate();
             case "create order":return new OrderCreate();
+            case "taxi_accept":return new TaxiSubmit();
+            case "userList":return new getAccountList();
+            default: return new Home();
         }
     }
 }

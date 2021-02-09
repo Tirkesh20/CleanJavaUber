@@ -1,18 +1,18 @@
-package command.Implementatiion.Order;
+package command.Implementatiion.Location;
 
-import Services.Implementation.OrderService;
 import command.Command;
 import command.Page;
 import exceptions.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class OrderCreate implements Command {
-    private OrderService orderService=new OrderService();
+public class TaxiSubmit implements Command {
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
+        Page page=new Page();
 
-
-        return new Page();
+//        page.setUrl();
+//        page.setRedirecet();
+        return null;
     }
 }

@@ -14,7 +14,7 @@ public class Account {
     private String userName;
     private String email;
     private UserType userType;
-    private String currentLocation;
+    private int location_id;
     private DriverStatus status;
 
     public DriverStatus getStatus() {
@@ -25,12 +25,12 @@ public class Account {
         this.status = status;
     }
 
-    public void setCurrentLocation(String currentLocation) {
-        this.currentLocation = currentLocation;
+    public int getLocation_id() {
+        return location_id;
     }
 
-    public String getCurrentLocation() {
-        return  currentLocation;
+    public void setLocation_id(int location_id) {
+        this.location_id = location_id;
     }
 
     public void setTaxi_id(int taxi_id) {
@@ -117,6 +117,8 @@ public UserType getUserType(){return userType ;}
                 "userName='" + userName + '\'' +
                 " email='" + email + '\'' +
                 " usertype='" + userType+'\''+
+                " id='" + Client_id+'\''+ taxi_id+'\''+
+
                 '}';
     }
 

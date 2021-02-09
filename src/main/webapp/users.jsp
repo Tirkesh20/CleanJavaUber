@@ -2,6 +2,7 @@
 <%@ page import="entities.Account" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
     <title>Users list</title>
@@ -18,31 +19,12 @@
         <div class="w3-container w3-light-blue">
             <h2>Users</h2>
         </div>
-        <%
-           AccountService accountService=new AccountService();
-            try {
 
-                List<Account> accounts = accountService.read();
-                if(!accounts.isEmpty()) {
-                    out.println("<ul class=\"w3-ul\">");
-                    for (Account a : accounts) {
-                        if (a.getUserType().toString().equals("CLIENT")|a.getUserType().toString().equals("TAXI")) {
-                            {
-                                out.println("<li class=\"w3-hover-sand\">" + "Username:"+ a.getUsername()+" "+"User type:" +a.getUserType()+" "+"Firstname:"+a.getFirstName()+"Lastname:"+""+a.getLastName()+"</li>");
-                            }
-                            out.println("</ul>");
-                        }
-                    }
-                }else out.println("<div class=\"w3-panel w3-red w3-display-container w3-card-4 w3-round\">\n"
-                        +
-                        "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
-                        "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-red w3-border w3-border-red w3-hover-border-grey\">×</span>\n" +
-                        "   <h5>There are no users yet!</h5>\n" +
-                        "</div>");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        %>
+        <c:forEach var="l" items="${sessionScope.list}">
+            <div>
+                ${l.firstName}
+            </div>
+        </c:forEach>
         <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
             <a href="main.jsp">back to main</a>
         </div>

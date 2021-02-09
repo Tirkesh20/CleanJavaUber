@@ -11,6 +11,8 @@ import exceptions.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountRead  implements Command {
     private AccountService accountService=new AccountService();
@@ -23,10 +25,17 @@ public class AccountRead  implements Command {
         Account account = accountService.checkService(username, password);
         if (account != null){
            HttpSession session=request.getSession();
-           session.setAttribute("account",account);
            if (account.getType().equals(UserType.TAXI)) {
                account.setStatus(DriverStatus.WAITING);
+               account.setTaxi_id(1);
            }
+           else {
+               account.setClient_id(1);
+           }
+            List<Account> accountList=new ArrayList<>();
+            accountList.add(account);
+
+            session.setAttribute("account",account);
            page.setUrl("main.jsp");
        }else{
            page.setUrl("login.jsp");
