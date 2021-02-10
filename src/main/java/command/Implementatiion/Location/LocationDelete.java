@@ -11,6 +11,10 @@ public class LocationDelete implements Command {
     private LocationService locationService=new LocationService();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
-        return new Page();
+        Page page=new Page();
+        locationService.delete();
+        page.setUrl("index.jsp");
+        page.setRedirecet(false);
+        return page;
     }
 }
