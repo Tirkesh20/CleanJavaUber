@@ -14,7 +14,8 @@ public class Account {
     private String userName;
     private String email;
     private UserType userType;
-    private int location_id;
+//    private int location_id;
+    private Location location;
     private DriverStatus status;
 
     private double location(double lat, double lng) {
@@ -24,33 +25,21 @@ public class Account {
     public DriverStatus getStatus() {
         return status;
     }
-
     public void setStatus(DriverStatus status) {
         this.status = status;
     }
-
-    public int getLocation_id() {
-        return location_id;
+    public Location getLocation() {
+        return location;
     }
-
-    public void setLocation_id(int location_id) {
-        this.location_id = location_id;
+    public void setLocation(Location location) {
+        this.location = location;
     }
-
     public void setTaxi_id(int taxi_id) {
         this.taxi_id = taxi_id;
     }
 
     public void setClient_id(int client_id) {
         this.Client_id = client_id;
-    }
-
-    public int getTaxi_id() {
-        return taxi_id;
-    }
-
-    public int getClient_id() {
-        return Client_id;
     }
 
     public long getId() {
@@ -64,7 +53,6 @@ public class Account {
     public UserType[] getType() {
         return UserType.values();
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -121,8 +109,7 @@ public UserType getUserType(){return userType ;}
                 "userName='" + userName + '\'' +
                 " email='" + email + '\'' +
                 " usertype='" + userType+'\''+
-                " id='" + Client_id+'\''+ taxi_id+'\''+
-
+                
                 '}';
     }
 

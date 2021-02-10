@@ -25,7 +25,7 @@
             <h2>Taxi available</h2>
             <c:forEach var="l" items="${sessionScope.locationList}">
                 <div>
-                        ${l}
+                    <p> ${l.firstName}  ${l.lastName}</p>
                 </div>
             </c:forEach>
         </div>

@@ -2,8 +2,10 @@ package Services.Implementation;
 
 import DAO.DAO;
 import DAO.Implementation.AccountDAO;
+import DAO.Implementation.LocationDao;
 import Services.Services;
 import entities.Account;
+import entities.Location;
 import exceptions.DaoException;
 import exceptions.ServiceException;
 
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class AccountService extends Services<Account>{
     private final DAO<Account> dao= new AccountDAO();
+    private final DAO<Location> locationDAO= new LocationDao();
+
 
     @Override
     public void create(Account entity) throws ServiceException {
@@ -35,7 +39,12 @@ try {
     @Override
     public List<Account> read() throws ServiceException {
         try {
-            return dao.select();
+            List<Account> select = dao.select();
+//            for (Account a:select) {
+//                int locationId = a.getLocation().getId();
+//
+//            }
+            return select;
         }catch  (DaoException e) {
             throw new ServiceException();
         }
