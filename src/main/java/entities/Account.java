@@ -14,7 +14,7 @@ public class Account {
     private String userName;
     private String email;
     private UserType userType;
-//    private int location_id;
+     private Integer location_id;
     private Location location;
     private DriverStatus status;
 
@@ -59,6 +59,29 @@ public class Account {
 
     }
 
+    public int getLocation_id() {
+        if (location_id!=null)
+        idSetter(id,location_id);
+        return location_id;
+    }
+
+    public void setLocation_id(int location_id) {
+        this.location_id = location_id;
+    }
+
+    public int idSetter(long id, int location_id) {
+        if (id > location_id) {
+            while (id != location_id) {
+                location_id++;
+            }
+        }
+        if (location_id>id){
+            while (location_id!=id){
+                location_id--;
+            }
+        }
+        return location_id;
+    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

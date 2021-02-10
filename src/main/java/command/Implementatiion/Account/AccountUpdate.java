@@ -15,7 +15,7 @@ private accFetcher accFetcher =new accFetcher();
     public Page execute(HttpServletRequest request) throws ServiceException {
 Page page=new Page();
         Account entity = accFetcher.fetchAcc(request);
-       accountService.create(entity);
+       accountService.update(entity);
         page.setUrl("login.jsp");
         page.setRedirecet(true);
         return new Page();

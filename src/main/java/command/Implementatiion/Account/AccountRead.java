@@ -28,13 +28,13 @@ public class AccountRead  implements Command {
            if (account.getType().equals(UserType.TAXI)) {
                account.setStatus(DriverStatus.WAITING);
                account.setTaxi_id(1);
+               account.getLocation_id();
            }
            else {
                account.setClient_id(1);
            }
             List<Account> accountList=new ArrayList<>();
             accountList.add(account);
-
             session.setAttribute("account",account);
            page.setUrl("main.jsp");
        }else{
