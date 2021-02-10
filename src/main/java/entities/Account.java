@@ -17,6 +17,10 @@ public class Account {
     private int location_id;
     private DriverStatus status;
 
+    private double location(double lat, double lng) {
+     return lat+lng;
+    }
+
     public DriverStatus getStatus() {
         return status;
     }

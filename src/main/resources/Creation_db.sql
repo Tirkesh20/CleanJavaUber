@@ -1,3 +1,10 @@
+create table location(
+                         id bigserial not null,
+                         lat decimal not null ,
+                         lng decimal not null,
+                         req_status varchar (50)not null,
+                         PRIMARY KEY (id)
+);
 create table account(
                         id bigserial not null,
                         first_name varchar(50) not null,
@@ -11,13 +18,7 @@ create table account(
                         FOREIGN KEY (location_id) REFERENCES location(id)
 );
 
-create table location(
-                         id bigserial not null,
-                         lat decimal not null ,
-                         lng decimal not null,
-                         req_status varchar (50)not null,
-                         PRIMARY KEY (id)
-);
+
 
 create table "order" (
                          id bigserial not null,

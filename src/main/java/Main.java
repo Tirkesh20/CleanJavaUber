@@ -16,19 +16,18 @@ public class Main {
         LocationDao dao=new LocationDao();
 
 //    AccountService s=new AccountService();
-//LocationService locationService=new LocationService();
-//Location location=new Location();
-//location.setStreetFrom("ashgabat");
-//location.setStreetTo("minsk");
-//location.setReqStatus(ReqStatus.SEARCHING);
+LocationService locationService=new LocationService();
+Location location=new Location();
+location.setLat(111.1);
+location.setLng(111.2);
+location.setReqStatus(ReqStatus.WAITING);
         try {
-            dao.select();
+            locationService.create(location);
 //          List<Account> accountList= s.read();
 //            for (Account acc:accountList) {
-//                System.out.println((acc));
-            System.out.println(dao);
+//                System.out.println((acc))
             System.out.println("+++");
-            } catch (DaoException serviceException) {
+            } catch (ServiceException serviceException) {
             serviceException.printStackTrace();
         }
 

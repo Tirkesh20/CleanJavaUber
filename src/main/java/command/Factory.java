@@ -3,6 +3,7 @@ package command;
 import command.Implementatiion.Account.*;
 import command.Implementatiion.Location.TaxiSubmit;
 import command.Implementatiion.Location.LocationCreate;
+import command.Implementatiion.Location.getLocationsList;
 import command.Implementatiion.Order.OrderCreate;
 import exceptions.ServiceException;
 
@@ -26,6 +27,7 @@ public class Factory implements Command {
             case "create order":return new OrderCreate();
             case "taxi_accept":return new TaxiSubmit();
             case "userList":return new getAccountList();
+            case "locationList":return new getLocationsList();
             default: return new Home();
         }
     }
