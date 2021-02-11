@@ -36,7 +36,7 @@ import java.util.List;
 
         @Override
         public void insert(Location entity) throws DaoException {
-            String sql = "INSERT INTO location( lat, lng,req_status) VALUES (?,?,?);";
+            String sql = "INSERT INTO location( lat, lng,req_status,account_id) VALUES (?,?,?,?);";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
                 stmt.executeUpdate();
@@ -48,7 +48,7 @@ import java.util.List;
 
         @Override
         public void update(Location entity) throws DaoException {
-            String sql = "UPDATE location set lat=?,lng=?,req_status-? where id=?";
+            String sql = "UPDATE location set lat=?,lng=?,req_status=? where account_id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
                 stmt.setInt(4,  entity.getId());
@@ -76,8 +76,8 @@ import java.util.List;
 
         @Override
         public Location selectById(int id) throws DaoException {
-            String sql = "select * from location where id=?";
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            String state = "select * from location where account_id=?";
+            try (PreparedStatement stmt = connection.prepareStatement(state)) {
                 stmt.setInt(1, id);
                 ResultSet resultSet = stmt.executeQuery();
                 return (resultSet.next()) ? fetchResultSet(resultSet) : null;
@@ -91,6 +91,7 @@ import java.util.List;
             location.setLat(resultSet.getDouble("lat"));
             location.setLng((resultSet.getDouble("lng")));
             location.setReqStatus(ReqStatus.valueOf(resultSet.getString("req_status")));
+            location.setAccount_id(resultSet.getLong("account_id"));
             return location;
         }
 
@@ -98,6 +99,7 @@ import java.util.List;
             stmt.setDouble(1,entity.getLat());
             stmt.setDouble(2, entity.getLng());
             stmt.setString(3,entity.getReqStatus().toString());
+            stmt.setLong(4,entity.getAccount_id());
         }
     }
 

@@ -19,20 +19,21 @@
     <c:if test="${(sessionScope.account.userType == 'CLIENT')}">
         <li><a href="newOrder.jsp">New order</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=locationList">My orders</a></li>
-        <li><a href="accountUpdate.jsp">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=logout">Logout</a></li>
+        <li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
+
     </c:if>
     <c:if test="${(sessionScope.account.userType == 'ADMIN')}">
         <li><a href="${pageContext.request.contextPath}/uber?command=userList">Users</a></li>
         <li><a href="newOrder.jsp">Orders</a></li>
-        <li><a href="accountUpdate.jsp">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=logout">Logout</a></li>
+        <li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
     </c:if>
     <c:if test="${(sessionScope.account.userType == 'TAXI')}">
         <li><a href="newOrder.jsp">New order</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=locationList">My orders</a></li>
-        <li><a href="accountUpdate.jsp">Account</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=logout">Logout</a></li>
+        li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
     </c:if>
 </ul>
 </body>

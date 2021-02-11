@@ -17,13 +17,12 @@
         <td> <input type="hidden"  name="command" value="create_location"  /> </td>
         <table style="background-color: #836ef8;margin-left:20px;margin-right: 20px " >
             <tr>
-                <td>Lat</td>
-                <td> <input type="text" name="lng"  /> </td></tr>
-            <tr><td>Lng</td><td> <input type="text" name="lat" /> </td></tr>
-            <tr><td>   <input type="submit" name="submit" value="location_submit"  /> </td></tr>
+                <td>Lng</td><td> <input type="text" name="lng"  /> </td><td>Lat</td><td> <input type="text" name="lat" /> </td>
+            <tr> <td>Lng2</td><td> <input type="text" name="lng2"  /> </td><td>Lat2</td><td> <input type="text" name="lat2" /> </td></tr>
+            <tr><td>   <input type="submit" name="submit" value="Search a taxi"  /> </td></tr>
         </table>
     </form>
-    <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+    <div >
         <a href="main.jsp">back to main</a>
     </div>
 </div>

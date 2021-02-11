@@ -1,10 +1,3 @@
-create table location(
-                         id bigserial not null,
-                         lat decimal not null ,
-                         lng decimal not null,
-                         req_status varchar (50)not null,
-                         PRIMARY KEY (id)
-);
 create table account(
                         id bigserial not null,
                         first_name varchar(50) not null,
@@ -13,10 +6,18 @@ create table account(
                         email varchar (20) not null ,
                         password varchar (50) not null,
                         user_type varchar (50) not null,
-                        location_id int ,
-                        PRIMARY KEY (id),
-                        FOREIGN KEY (location_id) REFERENCES location(id)
+                        PRIMARY KEY (id)
 );
+create table location(
+                         id bigserial not null,
+                         lat decimal not null ,
+                         lng decimal not null,
+                         req_status varchar (50)not null,
+                         account_id bigint,
+                         PRIMARY KEY (id),
+                         FOREIGN KEY (account_id) REFERENCES account(id)
+);
+
 
 
 

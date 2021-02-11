@@ -1,9 +1,6 @@
 package DAO;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import org.postgresql.Driver;
 
@@ -29,4 +26,6 @@ private ConnectionBuilder() {
     public static Connection getConnection() {
         return connection;
     }
+
 }
+

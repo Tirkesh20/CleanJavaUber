@@ -15,21 +15,7 @@
 <head>
     <title>Title</title>
     <ul>
-        <%
-            AccountService accountService=new AccountService();
-            try {
-                List<Account> accounts = accountService.read();
 
-                for (Account a : accounts) {
-                    if(a.getUserType().toString().equals("TAXI")) {
-                        out.println("<li>" + a + "</li>");
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        %>
     </ul>
 </head>
 <body>

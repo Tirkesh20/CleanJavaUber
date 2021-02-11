@@ -18,8 +18,7 @@ public class Main {
         account.setLastName("123");
         account.setFirstName("men");
         account.setUserName("yyy");
-        account.setUserType(UserType.ADMIN);
-        //account.setLocation_id(1);
+        account.setUserType(UserType.CLIENT);
         try {
            accountService.create(account);
             System.out.println(account);

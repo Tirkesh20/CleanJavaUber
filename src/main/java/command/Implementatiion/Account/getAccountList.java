@@ -16,7 +16,6 @@ public class getAccountList implements Command {
     public Page execute(HttpServletRequest request) throws ServiceException {
         Page page=new Page();
         List<Account> accountList=accountService.read();
-        System.out.println(accountList);
         HttpSession sessions=request.getSession();
         sessions.setAttribute("list",accountList);
         page.setRedirecet(true);

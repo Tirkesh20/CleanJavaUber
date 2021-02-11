@@ -27,11 +27,6 @@ public class AccountRead  implements Command {
            HttpSession session=request.getSession();
            if (account.getType().equals(UserType.TAXI)) {
                account.setStatus(DriverStatus.WAITING);
-               account.setTaxi_id(1);
-               account.getLocation_id();
-           }
-           else {
-               account.setClient_id(1);
            }
             List<Account> accountList=new ArrayList<>();
             accountList.add(account);

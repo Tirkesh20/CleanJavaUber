@@ -6,40 +6,20 @@ import java.util.Objects;
 
 public class Account {
     private long id;
-    private int Client_id;
-    private int taxi_id;
     private String firstName;
     private String lastName;
     private String password;
     private String userName;
     private String email;
     private UserType userType;
-     private Integer location_id;
-    private Location location;
     private DriverStatus status;
-
-    private double location(double lat, double lng) {
-     return lat+lng;
-    }
 
     public DriverStatus getStatus() {
         return status;
     }
+
     public void setStatus(DriverStatus status) {
         this.status = status;
-    }
-    public Location getLocation() {
-        return location;
-    }
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-    public void setTaxi_id(int taxi_id) {
-        this.taxi_id = taxi_id;
-    }
-
-    public void setClient_id(int client_id) {
-        this.Client_id = client_id;
     }
 
     public long getId() {
@@ -59,35 +39,13 @@ public class Account {
 
     }
 
-    public int getLocation_id() {
-        if (location_id!=null)
-        idSetter(id,location_id);
-        return location_id;
-    }
-
-    public void setLocation_id(int location_id) {
-        this.location_id = location_id;
-    }
-
-    public int idSetter(long id, int location_id) {
-        if (id > location_id) {
-            while (id != location_id) {
-                location_id++;
-            }
-        }
-        if (location_id>id){
-            while (location_id!=id){
-                location_id--;
-            }
-        }
-        return location_id;
-    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
+
     }
 
     public void setLastName(String lastName) {
@@ -118,6 +76,7 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
+
 public UserType getUserType(){return userType ;}
     public void setUserType(UserType userType) {
         this.userType = userType;
@@ -132,7 +91,6 @@ public UserType getUserType(){return userType ;}
                 "userName='" + userName + '\'' +
                 " email='" + email + '\'' +
                 " usertype='" + userType+'\''+
-                
                 '}';
     }
 
