@@ -11,18 +11,18 @@ import java.util.List;
 
     public class LocationDao extends DAO<Location> {
         @Override
-        public void delete() throws DaoException  {
+        public void delete() throws DaoException {
             String sql = "DELETE from location ";
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(sql);
 
             } catch (SQLException e) {
-              e.printStackTrace();
+                e.printStackTrace();
             }
         }
 
         @Override
-        public void deleteById(int id)  {
+        public void deleteById(int id) {
             String sql = "DELETE FROM location WHERE id=?";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -38,9 +38,9 @@ import java.util.List;
         public void insert(Location entity) throws DaoException {
             String sql = "INSERT INTO location( lat, lng,req_status,account_id) VALUES (?,?,?,?);";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                fetchSet(stmt,entity);
+                fetchSet(stmt, entity);
                 stmt.executeUpdate();
-            } catch (SQLException|NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 throw new DaoException(e.getMessage());
 
             }
@@ -50,8 +50,8 @@ import java.util.List;
         public void update(Location entity) throws DaoException {
             String sql = "UPDATE location set lat=?,lng=?,req_status=? where account_id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                fetchSet(stmt,entity);
-                stmt.setInt(4,  entity.getId());
+                fetchSet(stmt, entity);
+                stmt.setInt(4, entity.getId());
                 stmt.executeUpdate();
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
@@ -85,6 +85,7 @@ import java.util.List;
                 throw new DaoException(e.getMessage());
             }
         }
+
         private Location fetchResultSet(ResultSet resultSet) throws SQLException {
             Location location = new Location();
             location.setId(resultSet.getInt("id"));
@@ -96,10 +97,20 @@ import java.util.List;
         }
 
         private void fetchSet(PreparedStatement stmt, Location entity) throws SQLException {
-            stmt.setDouble(1,entity.getLat());
+            stmt.setDouble(1, entity.getLat());
             stmt.setDouble(2, entity.getLng());
-            stmt.setString(3,entity.getReqStatus().toString());
-            stmt.setLong(4,entity.getAccount_id());
+            stmt.setString(3, entity.getReqStatus().toString());
+            stmt.setLong(4, entity.getAccount_id());
+        }
+
+        public Location randomize() throws  DaoException {
+            String sql = " SELECT *FROM location ORDER BY random() LIMIT 1";
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                ResultSet resultSet = stmt.executeQuery();
+                return (resultSet.next()) ? fetchResultSet(resultSet) : null;
+            } catch (SQLException e) {
+                throw new DaoException(e.getMessage());
+            }
         }
     }
 

@@ -11,17 +11,10 @@ import java.util.List;
 
 public class Main {
     public static void  main(String[] args){
-        AccountService accountService=new AccountService();
-        Account account=new Account();
-        account.setPassword("1234");
-        account.setEmail("123.com");
-        account.setLastName("123");
-        account.setFirstName("men");
-        account.setUserName("yyy");
-        account.setUserType(UserType.CLIENT);
+        LocationService locationService=new LocationService();
+
         try {
-           accountService.create(account);
-            System.out.println(account);
+            System.out.println(locationService.randomize());
             System.out.println("+++");
             } catch (ServiceException serviceException) {
             serviceException.printStackTrace();

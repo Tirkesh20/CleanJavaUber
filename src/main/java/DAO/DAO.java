@@ -1,6 +1,7 @@
 package DAO;
 
 import entities.Account;
+import entities.Location;
 import exceptions.DaoException;
 
 import java.sql.Connection;
@@ -20,11 +21,14 @@ public abstract class DAO<T> {
 
     public T check(String username, String password) throws DaoException {
         return null;
-    };
+    }
     public abstract List<T> select() throws DaoException;
 
     public abstract T selectById(int id) throws DaoException;
 
 
+    public Location randomize() throws DaoException {
+        return null;
+    }
 }
 

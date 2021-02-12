@@ -25,12 +25,11 @@ public class LocationCreate implements Command {
         location.setLat(lat);
         location.setLng(lng);
         location.setReqStatus(ReqStatus.WAITING);
-        location.setAccount_id(1);
-        System.out.println(sessionAccount.getId());
+        location.setAccount_id(sessionAccount.getId());
         locationService.create(location);
-     location1.setLat(lat2);
-     location1.setLng(lng2);
-     location1.setReqStatus(ReqStatus.WAITING);
+        location1.setLat(lat2);
+        location1.setLng(lng2);
+        location1.setReqStatus(ReqStatus.WAITING);
         location1.setAccount_id(sessionAccount.getId());
         locationService.create(location1);
         page.setUrl("welcome.jsp");

@@ -51,4 +51,11 @@ public class LocationService extends Services<Location> {
         }
     }
 
+    public Location randomize()throws ServiceException {
+        try {
+            return dao.randomize();
+        } catch (DaoException e) {
+            throw new ServiceException();
+        }
+    }
 }

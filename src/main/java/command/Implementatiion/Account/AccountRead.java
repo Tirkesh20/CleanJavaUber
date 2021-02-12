@@ -2,6 +2,7 @@ package command.Implementatiion.Account;
 
 import Services.Implementation.AccountService;
 
+import Services.Implementation.LocationService;
 import command.Command;
 import command.Page;
 import entities.Account;
@@ -26,6 +27,9 @@ public class AccountRead  implements Command {
         if (account != null){
            HttpSession session=request.getSession();
            if (account.getType().equals(UserType.TAXI)) {
+               LocationService locationService=new LocationService();
+               locationService.randomize();
+               session.setAttribute("taxi_location",locationService);
                account.setStatus(DriverStatus.WAITING);
            }
             List<Account> accountList=new ArrayList<>();
