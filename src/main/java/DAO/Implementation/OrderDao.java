@@ -96,22 +96,22 @@ public class OrderDao extends DAO<Order> {
 
         private Order fetchResultSet(ResultSet resultSet) throws SQLException {
             Order order = new Order();
-            order.setId(resultSet.getInt("id"));
-            order.setClient_id(resultSet.getInt("Client_id"));
-            order.setTaxi_id(resultSet.getInt("taxi_id"));
-            order.setFrom_id(resultSet.getInt("from_id"));
-            order.setTo_id(resultSet.getInt("to_id"));
+            order.setId(resultSet.getLong("id"));
+            order.setClient_id(resultSet.getLong("Client_id"));
+            order.setTaxi_id(resultSet.getLong("taxi_id"));
+            order.setFrom_id(resultSet.getLong("from_id"));
+            order.setTo_id(resultSet.getLong("to_id"));
             order.setStatus(OrderStatus.valueOf(resultSet.getString("status")));
             order.setOrder_date(Timestamp.valueOf(resultSet.getString("pay_date")));
 
             return order;
         }
         private void fetchSet(PreparedStatement stmt, Order entity) throws SQLException {
-            stmt.setInt(1, entity.getId());
-            stmt.setInt(2, entity.getClient_id());
-            stmt.setInt(3, entity.getTaxi_id());
-            stmt.setInt(4, entity.getFrom_id());
-            stmt.setInt(5, entity.getTo_id());
+            stmt.setLong(1, entity.getId());
+            stmt.setLong(2, entity.getClient_id());
+            stmt.setLong(3, entity.getTaxi_id());
+            stmt.setLong(4, entity.getFrom_id());
+            stmt.setLong(5, entity.getTo_id());
             stmt.setTimestamp(6, Timestamp.valueOf("order_date"));
         }
     }

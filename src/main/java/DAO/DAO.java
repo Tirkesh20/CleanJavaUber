@@ -26,7 +26,9 @@ public abstract class DAO<T> {
 
     public abstract T selectById(long id) throws DaoException;
 
-
+public Account selectTaxi() throws DaoException {
+    return null;
+}
     public Location randomize() throws DaoException {
         return null;
     }

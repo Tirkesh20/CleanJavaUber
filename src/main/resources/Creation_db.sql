@@ -23,11 +23,11 @@ create table location(
 
 create table "order" (
                          id bigserial not null,
-                         client_id int not null,
-                         taxi_id int not null,
-                         from_id int not null,
-                         to_id int not null,
-                         status varchar(10),
+                         client_id decimal not null,
+                         taxi_id decimal not null,
+                         from_id decimal not null,
+                         to_id decimal not null,
+                         status varchar(50),
                          order_date timestamp without time zone,
                          PRIMARY KEY (id),
                          FOREIGN KEY (client_id) REFERENCES account(id) ON UPDATE CASCADE,

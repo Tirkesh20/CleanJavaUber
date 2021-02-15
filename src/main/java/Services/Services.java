@@ -1,5 +1,6 @@
 package Services;
 
+import entities.Account;
 import exceptions.ServiceException;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public abstract class Services <T> {
     public T checkService(String username,String password)throws  ServiceException{
      return null;
     }
+    public  Account returnTaxi(){return null;}
 }

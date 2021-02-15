@@ -1,9 +1,11 @@
 package command.Implementatiion.Location;
+import DAO.Implementation.OrderDao;
 import Services.Implementation.LocationService;
 import command.Command;
 import command.Page;
 import entities.Account;
 import entities.Location;
+import entities.Order;
 import entities.enums.ReqStatus;
 import exceptions.ServiceException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 public class LocationCreate implements Command {
     private final LocationService locationService=new LocationService();
+    private final OrderDao dao=new OrderDao();
     private final Page page=new Page();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
@@ -32,6 +35,10 @@ public class LocationCreate implements Command {
         location1.setReqStatus(ReqStatus.WAITING);
         location1.setAccountId(sessionAccount.getId());
         locationService.create(location1);
+        Order order=new Order();
+        order.setClient_id(sessionAccount.getId());
+        order.setFrom_id(location.getId());
+        order.setTo_id(location1.getId());
         page.setUrl("taxiAvailable.jsp");
         page.setRedirecet(true);
         return page;

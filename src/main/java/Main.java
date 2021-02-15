@@ -10,15 +10,8 @@ import exceptions.ServiceException;
 import java.util.List;
 
 public class Main {
-    public static void  main(String[] args){
-        LocationService locationService=new LocationService();
+    public static void  main(String[] args) {
 
-        try {
-            System.out.println(locationService.randomize());
-            System.out.println("+++");
-            } catch (ServiceException serviceException) {
-            serviceException.printStackTrace();
-        }
 
     }
 }

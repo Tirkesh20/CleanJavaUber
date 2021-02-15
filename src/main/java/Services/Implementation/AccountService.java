@@ -14,8 +14,14 @@ import java.util.List;
 
 public class AccountService extends Services<Account>{
     private final DAO<Account> dao= new AccountDAO();
-    private final DAO<Location> locationDAO= new LocationDao();
 
+public Account returnTaxi(Account entity) throws ServiceException {
+    try {Account account=dao.selectById(entity.getId());
+        return account;
+    } catch (DaoException e) {
+        throw new ServiceException();
+    }
+}
 
     @Override
     public void create(Account entity) throws ServiceException {
@@ -40,10 +46,6 @@ try {
     public List<Account> read() throws ServiceException {
         try {
             List<Account> select = dao.select();
-//            for (Account a:select) {
-//                int locationId = a.getLocation().getId();
-//
-//            }
             return select;
         }catch  (DaoException e) {
             throw new ServiceException();
