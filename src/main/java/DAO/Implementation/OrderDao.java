@@ -22,12 +22,12 @@ public class OrderDao extends DAO<Order> {
         }
 
         @Override
-        public void deleteById(int id) throws DaoException {
+        public void deleteById(long id) throws DaoException {
 
             String sql = "DELETE FROM order WHERE id=?";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setInt(1, id);
+                stmt.setLong(1, id);
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class OrderDao extends DAO<Order> {
             String sql = "UPDATE order set client_id=?,taxi_id=?,from_id=?,to_id=?,status=?,order_date=? where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
-                stmt.setInt(6, (int) entity.getId());
+                stmt.setLong(1,entity.getId());
                 stmt.executeUpdate();
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
@@ -81,11 +81,11 @@ public class OrderDao extends DAO<Order> {
         }
 
         @Override
-        public Order selectById(int id) throws DaoException {
+        public Order selectById(long id) throws DaoException {
 
             String sql = "select * from order where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setInt(1, id);
+                stmt.setLong(1, id);
                 ResultSet resultSet = stmt.executeQuery();
                 return (resultSet.next()) ? fetchResultSet(resultSet) : null;
             } catch (SQLException e) {

@@ -25,12 +25,12 @@ public class AccountDAO extends DAO<Account> {
     }
 
     @Override
-    public void deleteById(int id) throws DaoException {
+    public void deleteById(long id) throws DaoException {
 
         String sql = "DELETE FROM account WHERE id=?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -103,12 +103,12 @@ public class AccountDAO extends DAO<Account> {
     }
 
     @Override
-    public Account selectById(int id) throws DaoException {
+    public Account selectById(long id) throws DaoException {
 
         String query = "select * from account where id=?";
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             ResultSet resultSet = stmt.executeQuery();
             return (resultSet.next()) ? fetchResultSet(resultSet) : null;
         } catch (SQLException e) {

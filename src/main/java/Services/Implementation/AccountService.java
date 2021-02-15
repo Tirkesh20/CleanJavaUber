@@ -49,7 +49,6 @@ try {
             throw new ServiceException();
         }
     }
-
     @Override
     public void update(Account entity) throws ServiceException {
         try {
@@ -58,6 +57,18 @@ try {
             throw new ServiceException();
         }
 
+    }
+    public  Location UpdateLocation(Account entity){
+        LocationDao locationDao=new LocationDao();
+        try {
+            Location location= locationDao.randomize();
+            location.setAccountId(entity.getId());
+            locationDao.insert(location);
+            return location;
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

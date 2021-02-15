@@ -30,10 +30,9 @@
         <li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
     </c:if>
     <c:if test="${(sessionScope.account.userType == 'TAXI')}">
-        <li><a href="newOrder.jsp">New order</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=locationList">My orders</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=logout">Logout</a></li>
-        li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
+        <li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
     </c:if>
 </ul>
 </body>

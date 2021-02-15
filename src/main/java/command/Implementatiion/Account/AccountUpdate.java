@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 public class AccountUpdate implements Command {
 private AccountService accountService=new AccountService();
 private accFetcher accFetcher =new accFetcher();
+private final Page page=new Page();
+
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
-Page page=new Page();
         Account entity = accFetcher.fetchAcc(request);
-       accountService.update(entity);
+        accountService.update(entity);
         page.setUrl("login.jsp");
         page.setRedirecet(true);
         return new Page();

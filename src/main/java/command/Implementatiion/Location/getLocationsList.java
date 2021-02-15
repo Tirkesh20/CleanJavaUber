@@ -1,27 +1,31 @@
 package command.Implementatiion.Location;
 
+import DAO.Implementation.AccountDAO;
 import Services.Implementation.AccountService;
 import Services.Implementation.LocationService;
 import command.Command;
 import command.Page;
-import entities.Account;
 import entities.Location;
 import exceptions.ServiceException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 public class getLocationsList implements Command {
- private  final AccountService accountService=new AccountService();
+ private final LocationService service=new LocationService();
+                AccountDAO dao=new AccountDAO();
+ private final Page page=new Page();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
-        Page page=new Page();
+        HttpSession sessions=request.getSession();
+        List<Location> oldList=(List<Location>)sessions.getAttribute("taxiLocation");
+        List<Location> newList=new ArrayList<>();
+        newList.addAll(oldList);
+        oldList.clear();
+        sessions.setAttribute("newList",newList);
         page.setRedirecet(true);
         page.setUrl("taxiAvailable.jsp");
-        List<Account> locationList=accountService.read();
-        HttpSession sessions=request.getSession();
-        sessions.setAttribute("locationList",locationList);
         return page;
     }
 }

@@ -23,11 +23,11 @@ public class TransactionsDao extends DAO<Transactions>{
 
 
         @Override
-        public void deleteById(int id) throws DaoException, SQLException {
+        public void deleteById(long id) throws DaoException, SQLException {
             String sql = "DELETE FROM transaction WHERE id=?";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setInt(1, id);
+                stmt.setLong(1, id);
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
@@ -80,10 +80,10 @@ public class TransactionsDao extends DAO<Transactions>{
         }
 
         @Override
-        public Transactions selectById(int id) throws DaoException {
+        public Transactions selectById(long id) throws DaoException {
             String sql = "select * from transaction where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setInt(1, id);
+                stmt.setLong(1, id);
                 ResultSet resultSet = stmt.executeQuery();
                 return (resultSet.next()) ? fetchResultSet(resultSet) : null;
             } catch (SQLException e) {

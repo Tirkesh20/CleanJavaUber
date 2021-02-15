@@ -36,7 +36,6 @@ private AccountService accountService=new AccountService();
 
     private void doWork(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String commandType=req.getParameter("command");
-
         Factory factory=new Factory();
        Command command =factory.getCommand(commandType);
         try {

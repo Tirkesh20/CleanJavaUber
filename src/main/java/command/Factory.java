@@ -28,6 +28,7 @@ public class Factory implements Command {
             case "taxi_accept":return new TaxiSubmit();
             case "userList":return new getAccountList();
             case "locationList":return new getLocationsList();
+            case "getResponse":return new getResponse();
             default: return new Home();
         }
     }

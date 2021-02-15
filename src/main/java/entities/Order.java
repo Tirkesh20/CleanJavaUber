@@ -13,7 +13,7 @@ public class Order {
     private Timestamp order_date;
     private OrderStatus status = OrderStatus.ACCEPTED;
 
-    public void setClient_id(int lient_id) {
+    public void setClient_id(int client_id) {
         this.client_id = client_id;
     }
     public int getClient_id() {

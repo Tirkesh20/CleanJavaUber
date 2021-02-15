@@ -13,11 +13,16 @@
     <div class="w3-card-4">
         <div class="w3-container w3-light-blue">
             <h2>Taxi available</h2>
-            <c:forEach var="l" items="${sessionScope.account}">
+            <c:if test="${(sessionScope.newList !=null)}">
+            <c:forEach var="l" items="${sessionScope.newList}">
                 <div>
-               ${l} <input type="submit" name="submit" value="accept"  /> <input type="submit" name="submit" value="decline"  />
+                ${l.account_id} <input type="submit" name="submit" value="accept"  /> <input type="submit" name="submit" value="decline"  />
                 </div>
             </c:forEach>
+            </c:if>
+            <c:if test="${(sessionScope.newList ==null)}">
+            <p>Wait please</p>
+            </c:if>
         </div>
     </div>
 </div>

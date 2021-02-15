@@ -13,7 +13,7 @@ public abstract class DAO<T> {
 
     public abstract void delete() throws DaoException;
 
-    public abstract void deleteById(int id) throws DaoException, SQLException;
+    public abstract void deleteById(long id) throws DaoException, SQLException;
 
     public abstract void insert(T entity) throws DaoException;
 
@@ -24,7 +24,7 @@ public abstract class DAO<T> {
     }
     public abstract List<T> select() throws DaoException;
 
-    public abstract T selectById(int id) throws DaoException;
+    public abstract T selectById(long id) throws DaoException;
 
 
     public Location randomize() throws DaoException {

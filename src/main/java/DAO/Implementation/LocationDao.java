@@ -22,11 +22,11 @@ import java.util.List;
         }
 
         @Override
-        public void deleteById(int id) {
-            String sql = "DELETE FROM location WHERE id=?";
+        public void deleteById(long id) {
+            String sql = "DELETE FROM location WHERE account_id=?";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setInt(1, id);
+                stmt.setLong(5, id);
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
@@ -75,10 +75,10 @@ import java.util.List;
         }
 
         @Override
-        public Location selectById(int id) throws DaoException {
+        public Location selectById(long id) throws DaoException {
             String state = "select * from location where account_id=?";
             try (PreparedStatement stmt = connection.prepareStatement(state)) {
-                stmt.setInt(1, id);
+                stmt.setLong(1, id);
                 ResultSet resultSet = stmt.executeQuery();
                 return (resultSet.next()) ? fetchResultSet(resultSet) : null;
             } catch (SQLException e) {
@@ -92,7 +92,7 @@ import java.util.List;
             location.setLat(resultSet.getDouble("lat"));
             location.setLng((resultSet.getDouble("lng")));
             location.setReqStatus(ReqStatus.valueOf(resultSet.getString("req_status")));
-            location.setAccount_id(resultSet.getLong("account_id"));
+            location.setAccountId(resultSet.getLong("account_id"));
             return location;
         }
 

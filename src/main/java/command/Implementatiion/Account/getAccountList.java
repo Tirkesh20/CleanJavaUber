@@ -13,7 +13,7 @@ import java.util.List;
 public class getAccountList implements Command {
      private AccountService accountService=new AccountService();
     @Override
-    public Page execute(HttpServletRequest request) throws ServiceException {
+         public Page execute(HttpServletRequest request) throws ServiceException {
         Page page=new Page();
         List<Account> accountList=accountService.read();
         HttpSession sessions=request.getSession();
@@ -21,5 +21,5 @@ public class getAccountList implements Command {
         page.setRedirecet(true);
         page.setUrl("users.jsp");
         return page;
-    }
+        }
 }

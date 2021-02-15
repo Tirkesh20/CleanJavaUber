@@ -7,6 +7,7 @@ import entities.Location;
 import exceptions.DaoException;
 import exceptions.ServiceException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class LocationService extends Services<Location> {
@@ -29,6 +30,13 @@ public class LocationService extends Services<Location> {
         }catch (DaoException e){
             throw new ServiceException();
 
+        }
+    }
+    public void deleteID(long id){
+        try {
+            dao.deleteById(id);
+        } catch (DaoException |SQLException e) {
+            e.printStackTrace();
         }
     }
 
