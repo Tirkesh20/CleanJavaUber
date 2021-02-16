@@ -15,7 +15,7 @@ public abstract class DAO<T> {
 
     public abstract void deleteById(long id) throws DaoException, SQLException;
 
-    public abstract void insert(T entity) throws DaoException;
+    public abstract T insert(T entity) throws DaoException;
 
     public abstract void update(T entity) throws DaoException;
 

@@ -36,7 +36,7 @@ public class TransactionsDao extends DAO<Transactions>{
         }
 
         @Override
-        public void insert(Transactions entity) throws DaoException {
+        public Transactions insert(Transactions entity) throws DaoException {
             String sql = "INSERT INTO transaction( order_id, status) VALUES (?,?);";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
@@ -45,7 +45,7 @@ public class TransactionsDao extends DAO<Transactions>{
                 throw new DaoException(e.getMessage());
 
             }
-
+return null;
 
         }
 

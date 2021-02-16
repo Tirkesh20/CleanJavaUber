@@ -13,6 +13,7 @@ create table location(
                          lat decimal not null ,
                          lng decimal not null,
                          req_status varchar (50)not null,
+                         place varchar(50) not null ,
                          account_id bigint,
                          PRIMARY KEY (id),
                          FOREIGN KEY (account_id) REFERENCES account(id)
@@ -23,10 +24,10 @@ create table location(
 
 create table "order" (
                          id bigserial not null,
-                         client_id decimal not null,
-                         taxi_id decimal not null,
-                         from_id decimal not null,
-                         to_id decimal not null,
+                         client_id bigint not null,
+                         taxi_id bigint,
+                         from_id bigint not null,
+                         to_id bigint not null,
                          status varchar(50),
                          order_date timestamp without time zone,
                          PRIMARY KEY (id),
@@ -39,7 +40,7 @@ create table "order" (
 
 create table transaction(
                             id bigserial not null,
-                            order_id int not null,
+                            order_id bigint not null,
                             status varchar(20),
                             pay_date timestamp without time zone,
                             PRIMARY KEY(id),

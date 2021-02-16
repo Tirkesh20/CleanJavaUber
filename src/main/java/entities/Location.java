@@ -1,12 +1,14 @@
 package entities;
 
+import entities.enums.FromTo;
 import entities.enums.ReqStatus;
 
 public class Location {
     private int id;
     private double lat;
     private double lng;
-    private ReqStatus reqStatus;
+    private FromTo fromTo;
+    private ReqStatus reqStatus = ReqStatus.WAITING;
     private long account_id;
 
     public long getAccount_id() {
@@ -46,13 +48,22 @@ public class Location {
         this.lng = lng;
     }
 
+    public FromTo getFromTo() {
+        return fromTo;
+    }
+    public void setFromTo(FromTo fromTo) {
+        this.fromTo = fromTo;
+    }
 
     @Override
     public String toString() {
         return "Location{" +
                 "id=" + id +
-                ", streetName='" + lat + '\'' +
-                ", streetNumber=" + lng +
+                ", lat='" + lat + '\'' +
+                ", lng=" + lng +'\''+
+                ", FromTo='" + fromTo + '\'' +
+                ", accountId='" + account_id + '\'' +
+                ", Request Status='" + reqStatus + '\'' +
                 '}';
     }
 }

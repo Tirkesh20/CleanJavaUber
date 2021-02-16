@@ -3,6 +3,7 @@ package entities;
 import entities.enums.OrderStatus;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class Order {
     private long id;
@@ -10,7 +11,7 @@ public class Order {
     private long taxi_id;
     private long from_id;
     private long to_id;
-    private Timestamp order_date;
+    private Timestamp order_date = new Timestamp(System.currentTimeMillis());
     private OrderStatus status = OrderStatus.WAITING;
 
     public void setClient_id(long client_id) {
@@ -60,6 +61,19 @@ public class Order {
 
     public void setOrder_date(Timestamp order_date) {
         this.order_date = order_date;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", client_id=" + client_id +
+                ", taxi_id=" + taxi_id +
+                ", from_id=" + from_id +
+                ", to_id=" + to_id +
+                ", order_date=" + order_date +
+                ", status=" + status +
+                '}';
     }
 }
 

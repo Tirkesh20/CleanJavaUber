@@ -37,17 +37,20 @@ public class OrderDao extends DAO<Order> {
         }
 
         @Override
-        public void insert(Order entity) throws DaoException {
-
+        public Order insert(Order entity) throws DaoException {
             String sql = "INSERT INTO Order( client_id, taxi_id, from_id, to_id,status,order_date) VALUES (?,?,?,?,?,?);";
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            try (PreparedStatement stmt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                 fetchSet(stmt,entity);
                 stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()){
+                    entity.setId(rs.getInt(1));
+                }
+                return entity;
             } catch (SQLException e) {
                 throw new DaoException(e.getMessage());
 
             }
-
         }
 
 
@@ -102,7 +105,7 @@ public class OrderDao extends DAO<Order> {
             order.setFrom_id(resultSet.getLong("from_id"));
             order.setTo_id(resultSet.getLong("to_id"));
             order.setStatus(OrderStatus.valueOf(resultSet.getString("status")));
-            order.setOrder_date(Timestamp.valueOf(resultSet.getString("pay_date")));
+
 
             return order;
         }
@@ -112,7 +115,9 @@ public class OrderDao extends DAO<Order> {
             stmt.setLong(3, entity.getTaxi_id());
             stmt.setLong(4, entity.getFrom_id());
             stmt.setLong(5, entity.getTo_id());
-            stmt.setTimestamp(6, Timestamp.valueOf("order_date"));
+            stmt.setString(6, entity.getStatus().toString());
+            stmt.setTimestamp(7, new java.sql.Timestamp(new java.util.Date().getTime()));
+
         }
     }
 

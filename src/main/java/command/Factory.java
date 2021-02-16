@@ -23,8 +23,7 @@ public class Factory implements Command {
             case "logout":return new Logout();
             case "login":return new AccountRead();
             case"select":return new AccountSelect();
-            case "create_location":return new LocationCreate();
-            case "create order":return new OrderCreate();
+            case "create_order":return new OrderCreate();
             case "taxi_accept":return new TaxiSubmit();
             case "userList":return new getAccountList();
             case "locationList":return new getLocationsList();

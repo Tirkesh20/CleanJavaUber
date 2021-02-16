@@ -18,7 +18,7 @@
 <ul>
     <c:if test="${(sessionScope.account.userType == 'CLIENT')}">
         <li><a href="newOrder.jsp">New order</a></li>
-        <li><a href="${pageContext.request.contextPath}/uber?command=locationList">My orders</a></li>
+        <li><a href="${pageContext.request.contextPath}/uber?command=create_order">My orders</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=logout">Logout</a></li>
         <li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
 

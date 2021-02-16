@@ -40,7 +40,7 @@ public class AccountDAO extends DAO<Account> {
     }
 
     @Override
-    public void insert(Account entity) throws DaoException {
+    public Account insert(Account entity) throws DaoException {
 
         String sql = "INSERT INTO account( first_name, last_name, username, email,password,user_type) VALUES (?,?,?,?,?,?);";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -50,7 +50,7 @@ public class AccountDAO extends DAO<Account> {
             throw new DaoException(e.getMessage());
 
         }
-
+return entity;
     }
 
 

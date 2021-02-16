@@ -14,7 +14,7 @@
 <body>
 <div>
     <form action="/uber" method="post">
-        <td> <input type="hidden"  name="command" value="create_location"  /> </td>
+        <td> <input type="hidden"  name="command" value="create_order"  /> </td>
         <table style="background-color: #836ef8;margin-left:20px;margin-right: 20px " >
             <tr>
                 <td>Lng</td><td> <input type="text" name="lng"  /> </td><td>Lat</td><td> <input type="text" name="lat" /> </td>

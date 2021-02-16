@@ -2,6 +2,7 @@
 
 import DAO.DAO;
 import entities.Location;
+import entities.enums.FromTo;
 import entities.enums.ReqStatus;
 import exceptions.DaoException;
 
@@ -35,11 +36,16 @@ import java.util.List;
         }
 
         @Override
-        public void insert(Location entity) throws DaoException {
-            String sql = "INSERT INTO location( lat, lng,req_status,account_id) VALUES (?,?,?,?);";
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        public Location insert(Location entity) throws DaoException {
+            String sql = "INSERT INTO location( lat, lng,req_status,place,account_id) VALUES (?,?,?,?,?);";
+            try (PreparedStatement stmt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                 fetchSet(stmt, entity);
                 stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()){
+                    entity.setId(rs.getInt(1));
+                }
+                return entity;
             } catch (SQLException | NullPointerException e) {
                 throw new DaoException(e.getMessage());
 
@@ -48,7 +54,7 @@ import java.util.List;
 
         @Override
         public void update(Location entity) throws DaoException {
-            String sql = "UPDATE location set lat=?,lng=?,req_status=? where account_id=?";
+            String sql = "UPDATE location set lat=?,lng=?,req_status=?,place=? where account_id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt, entity);
                 stmt.setInt(4, entity.getId());
@@ -92,6 +98,7 @@ import java.util.List;
             location.setLat(resultSet.getDouble("lat"));
             location.setLng((resultSet.getDouble("lng")));
             location.setReqStatus(ReqStatus.valueOf(resultSet.getString("req_status")));
+            location.setFromTo(FromTo.valueOf(resultSet.getString("place")));
             location.setAccountId(resultSet.getLong("account_id"));
             return location;
         }
@@ -100,7 +107,8 @@ import java.util.List;
             stmt.setDouble(1, entity.getLat());
             stmt.setDouble(2, entity.getLng());
             stmt.setString(3, entity.getReqStatus().toString());
-            stmt.setLong(4, entity.getAccount_id());
+            stmt.setString(4, entity.getFromTo().toString());
+            stmt.setLong(5, entity.getAccount_id());
         }
 
         public Location randomize() throws  DaoException {
@@ -112,5 +120,6 @@ import java.util.List;
                 throw new DaoException(e.getMessage());
             }
         }
+
     }
 
