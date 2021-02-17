@@ -25,7 +25,7 @@
     </c:if>
     <c:if test="${(sessionScope.account.userType == 'ADMIN')}">
         <li><a href="${pageContext.request.contextPath}/uber?command=userList">Users</a></li>
-        <li><a href="newOrder.jsp">Orders</a></li>
+        <li><a href="${pageContext.request.contextPath}/uber?command=orders">Orders</a></li>
         <li><a href="${pageContext.request.contextPath}/uber?command=logout">Logout</a></li>
         <li><a href="accountUpdate.jsp">${sessionScope.account.username}</a></li>
     </c:if>

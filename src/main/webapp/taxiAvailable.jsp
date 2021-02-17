@@ -13,14 +13,13 @@
     <div class="w3-card-4">
         <div class="w3-container w3-light-blue">
             <h2>Taxi available</h2>
-            <c:if test="${(sessionScope.order !=null)}">
-            <c:forEach var="l" items="${sessionScope.order}">
+
+            <c:if test="${ not empty sessionScope.Order}">
                 <div>
-                ${l} <input type="submit" name="submit" value="accept"  /> <input type="submit" name="submit" value="decline"  />
+                    <a href="${pageContext.request.contextPath}/uber?command=getResponse">${sessionScope.Order}</a>
                 </div>
-            </c:forEach>
             </c:if>
-            <c:if test="${(sessionScope.order ==null)}">
+            <c:if test="${(sessionScope.Order ==null)}">
             <p>Wait please</p>
             </c:if>
         </div>

@@ -5,6 +5,7 @@ import command.Implementatiion.Location.TaxiSubmit;
 import command.Implementatiion.Location.LocationCreate;
 import command.Implementatiion.Location.getLocationsList;
 import command.Implementatiion.Order.OrderCreate;
+import command.Implementatiion.Order.OrderRead;
 import exceptions.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,7 @@ public class Factory implements Command {
             case "userList":return new getAccountList();
             case "locationList":return new getLocationsList();
             case "getResponse":return new getResponse();
+            case "orders":return new OrderRead();
             default: return new Home();
         }
     }
