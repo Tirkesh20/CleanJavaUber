@@ -7,11 +7,9 @@ import entities.Account;
 import entities.Location;
 import entities.Order;
 import entities.enums.FromTo;
-import entities.enums.ReqStatus;
 import exceptions.ServiceException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 
 public class OrderCreate implements Command {
     private final OrderService orderService=new OrderService();
@@ -37,7 +35,9 @@ public class OrderCreate implements Command {
         to.setLng(lng2);
         to.setFromTo(FromTo.TO);
         to.setAccountId(sessionAccount.getId());
+        System.out.println("+++");
         order = orderService.createOrder(order,from,to);
+
         session.setAttribute("order",order);
         page.setUrl("taxiAvailable.jsp");
         page.setRedirecet(true);

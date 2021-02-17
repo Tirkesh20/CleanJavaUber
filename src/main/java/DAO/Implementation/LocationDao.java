@@ -37,7 +37,7 @@ import java.util.List;
 
         @Override
         public Location insert(Location entity) throws DaoException {
-            String sql = "INSERT INTO location( lat, lng,req_status,place,account_id) VALUES (?,?,?,?,?);";
+            String sql = "INSERT INTO location( lat, lng,req_status,place,account_id) VALUES (?,?,?,?,?)";
             try (PreparedStatement stmt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                 fetchSet(stmt, entity);
                 stmt.executeUpdate();

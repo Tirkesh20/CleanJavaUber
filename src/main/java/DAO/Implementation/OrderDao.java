@@ -1,5 +1,4 @@
 package DAO.Implementation;
-
 import DAO.DAO;
 
 import java.sql.*;
@@ -8,16 +7,14 @@ import java.util.List;
 import entities.Order;
 import entities.enums.OrderStatus;
 import exceptions.DaoException;
-
 public class OrderDao extends DAO<Order> {
         @Override
         public void delete() throws DaoException {
-            String sql = "DELETE from Order";
+            String sql = "DELETE from order";
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(sql);
-
             } catch (SQLException e) {
-
+                throw new DaoException(e.getMessage());
             }
         }
 
@@ -31,14 +28,14 @@ public class OrderDao extends DAO<Order> {
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
-                e.getMessage();
+                throw new DaoException(e.getMessage());
             }
 
         }
 
         @Override
         public Order insert(Order entity) throws DaoException {
-            String sql = "INSERT INTO Order( client_id, taxi_id, from_id, to_id,status,order_date) VALUES (?,?,?,?,?,?);";
+            String sql = "INSERT INTO \"order\"( client_id, from_id, to_id,status,order_date) VALUES (?,?,?,?,?)";
             try (PreparedStatement stmt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                 fetchSet(stmt,entity);
                 stmt.executeUpdate();
@@ -53,7 +50,7 @@ public class OrderDao extends DAO<Order> {
             }
         }
 
-
+//todo fetch with taxi_id
     @Override
         public void update(Order entity) throws DaoException {
             String sql = "UPDATE order set client_id=?,taxi_id=?,from_id=?,to_id=?,status=?,order_date=? where id=?";
@@ -96,27 +93,22 @@ public class OrderDao extends DAO<Order> {
             }
         }
 
-
         private Order fetchResultSet(ResultSet resultSet) throws SQLException {
             Order order = new Order();
-            order.setId(resultSet.getLong("id"));
             order.setClient_id(resultSet.getLong("Client_id"));
             order.setTaxi_id(resultSet.getLong("taxi_id"));
             order.setFrom_id(resultSet.getLong("from_id"));
             order.setTo_id(resultSet.getLong("to_id"));
             order.setStatus(OrderStatus.valueOf(resultSet.getString("status")));
-
-
+            order.setOrder_date(resultSet.getTimestamp("pay_date"));
             return order;
         }
         private void fetchSet(PreparedStatement stmt, Order entity) throws SQLException {
-            stmt.setLong(1, entity.getId());
-            stmt.setLong(2, entity.getClient_id());
-            stmt.setLong(3, entity.getTaxi_id());
-            stmt.setLong(4, entity.getFrom_id());
-            stmt.setLong(5, entity.getTo_id());
-            stmt.setString(6, entity.getStatus().toString());
-            stmt.setTimestamp(7, new java.sql.Timestamp(new java.util.Date().getTime()));
+            stmt.setLong(1, entity.getClient_id());
+            stmt.setLong(2, entity.getFrom_id());
+            stmt.setLong(3, entity.getTo_id());
+            stmt.setString(4, entity.getStatus().toString());
+            stmt.setTimestamp(5, entity.getOrder_date());
 
         }
     }

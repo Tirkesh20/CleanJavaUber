@@ -8,7 +8,7 @@ import exceptions.ServiceException;
 import javax.servlet.http.HttpServletRequest;
 
 public class OrderRead implements Command {
-    private OrderService orderService=new OrderService();
+    private  final OrderService orderService=new OrderService();
     private final Page page=new Page();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {

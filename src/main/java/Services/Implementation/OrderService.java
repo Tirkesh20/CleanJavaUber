@@ -6,7 +6,6 @@ import DAO.Implementation.OrderDao;
 import Services.Services;
 import entities.Location;
 import entities.Order;
-import entities.enums.ReqStatus;
 import exceptions.DaoException;
 import exceptions.ServiceException;
 
@@ -39,11 +38,12 @@ public class OrderService extends Services<Order> {
         try {
             from = dao2.insert(from);
             to =  dao2.insert(to);
+            order.setClient_id(from.getAccount_id());
             order.setFrom_id(from.getId());
             order.setTo_id(to.getId());
             dao.insert(order);
         }catch (DaoException e){
-            throw new ServiceException();
+            throw new ServiceException(e.getMessage());
         }
         return order;
     }

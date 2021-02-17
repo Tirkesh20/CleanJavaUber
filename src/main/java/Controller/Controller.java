@@ -44,7 +44,7 @@ private AccountService accountService=new AccountService();
                 doRedirect(req,resp,page.getUrl());
             }else {doForward(req,resp,page.getUrl());}
         }catch (ServiceException e){
-            System.out.println("error");
+            throw new ServletException(e);
         }
 
     }
