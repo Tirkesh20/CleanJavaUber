@@ -23,9 +23,9 @@
             <h2>Orders</h2>
         </div>
 
-        <c:forEach var="l" items="${sessionScope.list}">
+        <c:forEach var="l" items="${sessionScope.orderList}">
             <div>
-
+            ${l}
             </div>
         </c:forEach>
         <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
