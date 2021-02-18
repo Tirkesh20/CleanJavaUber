@@ -10,7 +10,7 @@ import exceptions.DaoException;
 public class OrderDao extends DAO<Order> {
         @Override
         public void delete() throws DaoException {
-            String sql = "DELETE from order";
+            String sql = "DELETE from \"order\"";
             try (Statement stmt = connection.createStatement()) {
                 stmt.executeUpdate(sql);
             } catch (SQLException e) {
@@ -21,7 +21,7 @@ public class OrderDao extends DAO<Order> {
         @Override
         public void deleteById(long id) throws DaoException {
 
-            String sql = "DELETE FROM order WHERE id=?";
+            String sql = "DELETE FROM \"order\" WHERE id=?";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setLong(1, id);
@@ -53,7 +53,7 @@ public class OrderDao extends DAO<Order> {
 //todo fetch with taxi_id
     @Override
         public void update(Order entity) throws DaoException {
-            String sql = "UPDATE order set client_id=?,taxi_id=?,from_id=?,to_id=?,status=?,order_date=? where id=?";
+            String sql = "UPDATE \"order\" set client_id=?,taxi_id=?,from_id=?,to_id=?,status=?,order_date=? where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 fetchSet(stmt,entity);
                 stmt.setLong(1,entity.getId());
@@ -66,7 +66,7 @@ public class OrderDao extends DAO<Order> {
     @Override
         public List<Order> select() throws DaoException {
 
-            String query = "select * from order";
+            String query = "select * from \"order\"";
 
             try (PreparedStatement stmt = connection.prepareStatement(query)) {
                 ResultSet resultSet = stmt.executeQuery();
@@ -83,7 +83,7 @@ public class OrderDao extends DAO<Order> {
         @Override
         public Order selectById(long id) throws DaoException {
 
-            String sql = "select * from order where id=?";
+            String sql = "select * from \"order\" where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setLong(1, id);
                 ResultSet resultSet = stmt.executeQuery();
