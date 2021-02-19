@@ -2,10 +2,9 @@ package command;
 
 import command.Implementatiion.Account.*;
 import command.Implementatiion.Location.TaxiSubmit;
-import command.Implementatiion.Location.LocationCreate;
-import command.Implementatiion.Location.getLocationsList;
 import command.Implementatiion.Order.OrderCreate;
 import command.Implementatiion.Order.OrderRead;
+import command.Implementatiion.Order.ordersWaiting;
 import exceptions.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +24,9 @@ public class Factory implements Command {
             case "login":return new AccountRead();
             case"select":return new AccountSelect();
             case "create_order":return new OrderCreate();
+            case "ordersWaiting":return new ordersWaiting();
             case "taxi_accept":return new TaxiSubmit();
             case "userList":return new getAccountList();
-            case "locationList":return new getLocationsList();
             case "getResponse":return new getResponse();
             case "orders":return new OrderRead();
             default: return new Home();

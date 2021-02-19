@@ -13,16 +13,17 @@
     <div class="w3-card-4">
         <div class="w3-container w3-light-blue">
             <h2>Taxi available</h2>
-
+<div
             <c:if test="${ not empty sessionScope.Order}">
                 <div>
-                    <a href="${pageContext.request.contextPath}/uber?command=getResponse">${sessionScope.Order}</a>
+                <a href="${pageContext.request.contextPath}/uber?command=getResponse">${sessionScope.Order}</a>
                 </div>
             </c:if>
             <c:if test="${(sessionScope.Order ==null)}">
             <p>Wait please</p>
             </c:if>
         </div>
+    </div>
     </div>
 </div>
 

@@ -10,6 +10,13 @@ public abstract class Services <T> {
     public abstract void delete()throws ServiceException;
     public abstract List<T> read() throws ServiceException;
     public abstract void update(T entity) throws ServiceException;
+
+    public List<T> readClient() throws ServiceException {
+        return null;
+    }
+    public List<T> readTaxi() throws ServiceException {
+        return null;
+    }
     public T checkService(String username,String password)throws  ServiceException{
      return null;
     }

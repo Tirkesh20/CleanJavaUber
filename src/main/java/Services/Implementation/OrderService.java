@@ -47,19 +47,6 @@ public class OrderService extends Services<Order> {
         }
         return order;
     }
-//    public long createLocation(double lat,double lng,long accountId) throws ServiceException {
-//        Location location= new Location();
-//        location.setLat(lat);
-//        location.setLng(lng);
-//        location.setReqStatus(ReqStatus.WAITING);
-//        location.setAccountId(accountId);
-//        try {
-//            dao2.insert(location);
-//        }catch (DaoException e){
-//         throw new ServiceException();
-//        }
-//        return location.getId();
-//    }
 
     @Override
     public List<Order> read() throws ServiceException {
@@ -69,6 +56,20 @@ public class OrderService extends Services<Order> {
         }catch  (DaoException e) {
             throw new ServiceException();
         }
+    }
+
+    @Override
+    public List<Order> readClient() throws ServiceException {
+        try {
+            return dao.selectClient();
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Order> readTaxi() throws ServiceException {
+        return super.readTaxi();
     }
 
     @Override

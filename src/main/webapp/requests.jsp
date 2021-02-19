@@ -3,6 +3,7 @@
 <%@ page import="entities.Location" %>
 <%@ page import="entities.enums.ReqStatus" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Users list</title>
@@ -19,6 +20,26 @@
         <div class="w3-container w3-light-blue">
             <h2>Clients waiting</h2>
         </div>
+        <c:if test="${( not empty sessionScope.clientsWaiting)}">
+        <c:forEach var="l" items="${sessionScope.clientsWaiting}">
+        <form action="/uber" method="post">
+            <div>
+                <p> ${l.toString()}   <input type="submit" name="command" value="accept"  /></p>
+            </div>
+        </c:forEach>
+            </c:if>
+        </form>
+        <c:if test="${(sessionScope.ordersWaiting !=null)}">
+        <div>
+            <c:forEach var="l" items="${sessionScope.ordersWaiting}">
+            <form action="/uber" method="post">
+                <input type="hidden"  name="command" value="accept"  />
+                <div>
+                    <p> ${l.toString()}   <input type="submit" name=${l.taxi_id} value="accept"  /></p>
+                </div>
+                </c:forEach>
+    </div>
+        </c:if>
 
     </div>
 </div>

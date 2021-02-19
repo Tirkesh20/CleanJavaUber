@@ -26,14 +26,11 @@ private AccountService accountService=new AccountService();
             doWork(req,resp);
 
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             doWork(req,resp);
 
     }
-
-
     private void doWork(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String commandType=req.getParameter("command");
         Factory factory=new Factory();

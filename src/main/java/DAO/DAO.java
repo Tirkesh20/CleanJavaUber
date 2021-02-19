@@ -24,11 +24,12 @@ public abstract class DAO<T> {
     }
     public abstract List<T> select() throws DaoException;
 
+    public List<T> selectClient() throws DaoException {
+        return null;
+    }
+
     public abstract T selectById(long id) throws DaoException;
 
-public Account selectTaxi() throws DaoException {
-    return null;
-}
     public Location randomize() throws DaoException {
         return null;
     }

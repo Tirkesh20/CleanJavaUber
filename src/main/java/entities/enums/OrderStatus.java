@@ -1,5 +1,5 @@
 package entities.enums;
 
 public enum OrderStatus {
-    ACCEPTED,UN_ACCEPTED,WAITING
+    ACCEPTED,CLIENT_ACCEPTED,WAITING,DONE
 }
