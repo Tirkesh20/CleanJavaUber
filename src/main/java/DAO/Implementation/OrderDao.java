@@ -105,10 +105,11 @@ public class OrderDao extends DAO<Order> {
         }
         private void fetchSet(PreparedStatement stmt, Order entity) throws SQLException {
             stmt.setLong(1, entity.getClient_id());
-            stmt.setLong(2, entity.getFrom_id());
-            stmt.setLong(3, entity.getTo_id());
-            stmt.setString(4, entity.getStatus().toString());
-            stmt.setTimestamp(5, entity.getOrder_date());
+            stmt.setLong(2,entity.getTaxi_id());
+            stmt.setLong(3, entity.getFrom_id());
+            stmt.setLong(4, entity.getTo_id());
+            stmt.setString(5, entity.getStatus().toString());
+            stmt.setTimestamp(6, entity.getOrder_date());
 
         }
     }
