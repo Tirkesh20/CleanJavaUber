@@ -50,13 +50,12 @@ public class OrderDao extends DAO<Order> {
             }
         }
 
-//todo fetch with taxi_id
     @Override
         public void update(Order entity) throws DaoException {
             String sql = "UPDATE \"order\" set client_id=?,taxi_id=?,from_id=?,to_id=?,status=?,order_date=? where id=?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                fetchSet(stmt,entity);
-                stmt.setLong(1,entity.getId());
+                fetchSetForTaxi(stmt,entity);
+                stmt.setLong(7,entity.getId());
                 stmt.executeUpdate();
             } catch (SQLException sqlException) {
                 sqlException.printStackTrace();
@@ -129,6 +128,7 @@ public class OrderDao extends DAO<Order> {
     }
         private Order fetchResultSet(ResultSet resultSet) throws SQLException {
             Order order = new Order();
+            order.setId(resultSet.getLong("id"));
             order.setClient_id(resultSet.getLong("Client_id"));
             order.setTaxi_id(resultSet.getLong("taxi_id"));
             order.setFrom_id(resultSet.getLong("from_id"));

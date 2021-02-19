@@ -32,10 +32,11 @@
         <c:if test="${(sessionScope.ordersWaiting !=null)}">
         <div>
             <c:forEach var="l" items="${sessionScope.ordersWaiting}">
-            <form action="/uber" method="post">
-                <input type="hidden"  name="command" value="accept"  />
+            <form action="${pageContext.request.contextPath}/uber" method="post">
+                <input type="hidden"  name="command" value="client_accept"  />
+                <input type="hidden"  name="taxiAcceptOrderId" value="${l.id}"  />
                 <div>
-                    <p> ${l.toString()}   <input type="submit" name=${l.taxi_id} value="accept"  /></p>
+                    <p> ${l.toString()}   <input type="submit" value="accept"  /></p>
                 </div>
                 </c:forEach>
     </div>

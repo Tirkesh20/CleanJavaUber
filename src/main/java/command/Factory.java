@@ -2,6 +2,7 @@ package command;
 
 import command.Implementatiion.Account.*;
 import command.Implementatiion.Location.TaxiSubmit;
+import command.Implementatiion.Order.TaxiAcceptOrder;
 import command.Implementatiion.Order.OrderCreate;
 import command.Implementatiion.Order.OrderRead;
 import command.Implementatiion.Order.ordersWaiting;
@@ -18,6 +19,7 @@ public class Factory implements Command {
     }
     public Command getCommand(String type){
         switch (type){
+            case "client_accept" : return new TaxiAcceptOrder();
             case "account_create": return new AccountCreate();
             case "account_update":return new AccountUpdate();
             case "logout":return new Logout();
