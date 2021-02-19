@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 public class Home implements Command{
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
-        return null;
+Page page=new Page();
+homeCommand();
+        return page;
     }
     public void homeCommand(){
         System.out.println("Default");

@@ -15,11 +15,11 @@ public class OrderRead implements Command {
     private final Page page=new Page();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
-       List<Order> orderList= orderService.read();
         HttpSession session=request.getSession();
+        List<Order> orderList=orderService.read();
         session.setAttribute("orderList",orderList);
         page.setRedirecet(true);
-        page.setUrl("orders.jsp");
+        page.setUrl("taxiAvailable.jsp");
         return new Page();
     }
 }

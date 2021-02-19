@@ -31,15 +31,21 @@
         </form>
         <c:if test="${(sessionScope.ordersWaiting !=null)}">
         <div>
-            <c:forEach var="l" items="${sessionScope.ordersWaiting}">
+            <c:forEach var="l" items="${sessionScope.orderList}">
             <form action="${pageContext.request.contextPath}/uber" method="post">
-                <input type="hidden"  name="command" value="client_accept"  />
+                <input type="hidden"  name="command" value="taxi_accept"  />
+
                 <input type="hidden"  name="taxiAcceptOrderId" value="${l.id}"  />
                 <div>
                     <p> ${l.toString()}   <input type="submit" value="accept"  /></p>
+                    <c:if test="${l.status == 'CLIENT_ACCEPTED'}">
+                        <input type="hidden"  name="command" value="taxi_confirm"  />
+                        <input type="hidden"  name="taxiConfirmId" value="${l.id}"  />
+                        <input type="submit" value="Confirm"  /></p>
+                    </c:if>
                 </div>
                 </c:forEach>
-    </div>
+        </div>
         </c:if>
 
     </div>

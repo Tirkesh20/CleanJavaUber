@@ -48,7 +48,9 @@
 
         <c:forEach var="l" items="${sessionScope.orderList}">
             <div>
+                <c:if test="${l.status=='DONE'}">
             ${l}
+                </c:if>>
             </div>
         </c:forEach>
         <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">

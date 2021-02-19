@@ -64,7 +64,7 @@ public class OrderDao extends DAO<Order> {
 
     @Override
         public List<Order> select() throws DaoException {
-            String query = "select * from \"order\" where client_id=?";
+            String query = "select * from \"order\"";
             try (PreparedStatement stmt = connection.prepareStatement(query)) {
                 ResultSet resultSet = stmt.executeQuery();
                 List<Order> orders = new ArrayList<>();

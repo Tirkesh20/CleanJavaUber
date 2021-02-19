@@ -11,11 +11,13 @@ import java.util.List;
 
 public class AccountSelect implements Command {
     private AccountService accountService=new AccountService();
-
+Page page=new Page();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
         List<Account> read = accountService.read();
-        return null;
+        page.setRedirecet(true);
+        page.setUrl("welcome.jps");
+        return page;
     }
 
 }
