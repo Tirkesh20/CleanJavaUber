@@ -23,11 +23,7 @@
             <h2>Orders</h2>
         </div>
         <c:forEach var="l" items="${sessionScope.orders}">
-                <c:if test="${l.status=='DONE'}">
-                    <div>
-                        ${l}
-                    </div>
-                </c:if>>
+                    <div>${l}</div>
         </c:forEach>
         <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
             <a href="main.jsp">back to main</a>

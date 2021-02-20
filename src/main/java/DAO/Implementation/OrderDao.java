@@ -106,9 +106,10 @@ public class OrderDao extends DAO<Order> {
         }
     public List<Order> selectByClientId(long id) throws DaoException
     {
-        String sql = "select * from \"order\" where client_id=?";
+        String sql = "select * from \"order\" where client_id=? and status<>'DONE'";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, id);
+
             ResultSet resultSet = stmt.executeQuery();
             List<Order> orders = new ArrayList<>();
             while (resultSet.next()) {
