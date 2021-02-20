@@ -15,7 +15,7 @@ Page page=new Page();
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
         List<Account> read = accountService.read();
-        page.setRedirecet(true);
+        page.setRedirect(true);
         page.setUrl("welcome.jps");
         return page;
     }

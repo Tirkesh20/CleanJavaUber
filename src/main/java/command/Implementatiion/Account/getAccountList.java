@@ -18,7 +18,7 @@ public class getAccountList implements Command {
         List<Account> accountList=accountService.read();
         HttpSession sessions=request.getSession();
         sessions.setAttribute("list",accountList);
-        page.setRedirecet(true);
+        page.setRedirect(true);
         page.setUrl("users.jsp");
         return page;
         }

@@ -39,7 +39,7 @@ public class OrderCreate implements Command {
         order = orderService.createOrder(order,from,to);
         session.setAttribute("Order",order);
         page.setUrl("taxiAvailable.jsp");
-        page.setRedirecet(true);
+        page.setRedirect(true);
         return page;
     }
 }

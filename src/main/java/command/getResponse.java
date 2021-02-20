@@ -20,7 +20,7 @@ public class getResponse implements Command {
         }catch (UncheckedIOException exception){
             exception.addSuppressed(exception);
         }
-        page.setRedirecet(true);
+        page.setRedirect(true);
         page.setUrl("taxiAvailable.jsp");
         return page;
     }

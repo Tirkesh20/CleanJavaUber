@@ -13,17 +13,14 @@ package command.Implementatiion.Order;
         import javax.servlet.http.HttpSession;
         import java.util.List;
         import java.util.Optional;
-
 public class TaxiConfirm implements Command {
     private final OrderService orderService = new OrderService();
     private final Page page = new Page();
-
     @Override
     public Page execute(HttpServletRequest request) throws ServiceException {
-        List<Order> list = orderService.readClient();
+        List<Order> list = orderService.read();
         HttpSession session = request.getSession();
-        long id = Long.parseLong(request.getParameter("taxiConfirmed"));
-        Account account = (Account) session.getAttribute("account");
+        long id = Long.parseLong(request.getParameter("taxiConfirmId"));
         Optional<Order> order = list.stream()
                 .filter(o -> o.getId() == id)
                 .findFirst();
@@ -35,8 +32,8 @@ public class TaxiConfirm implements Command {
                 System.out.println("service error in class TAXi confirm");
             }
         });
-        page.setUrl("requests.jsp");
-        page.setRedirecet(true);
+        page.setUrl("main.jsp");
+        page.setRedirect(false);
         return page;
     }
 

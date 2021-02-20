@@ -59,9 +59,9 @@ public class OrderService extends Services<Order> {
     }
 
     @Override
-    public List<Order> readClient() throws ServiceException {
+    public List<Order> readClient(long id) throws ServiceException {
         try {
-            return dao.selectClient();
+            return dao.selectByClientId(id);
         } catch (DaoException e) {
             throw new ServiceException(e.getMessage());
         }

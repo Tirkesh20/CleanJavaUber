@@ -36,7 +36,7 @@ public class TaxiAcceptOrder implements Command {
             }
         });
         page.setUrl("requests.jsp");
-        page.setRedirecet(true);
+        page.setRedirect(true);
         return page;
     }
 

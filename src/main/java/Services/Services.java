@@ -11,7 +11,7 @@ public abstract class Services <T> {
     public abstract List<T> read() throws ServiceException;
     public abstract void update(T entity) throws ServiceException;
 
-    public List<T> readClient() throws ServiceException {
+    public List<T> readClient(long id) throws ServiceException {
         return null;
     }
     public List<T> readTaxi() throws ServiceException {

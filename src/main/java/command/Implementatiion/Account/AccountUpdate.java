@@ -18,7 +18,7 @@ private final Page page=new Page();
         Account entity = accFetcher.fetchAcc(request);
         accountService.update(entity);
         page.setUrl("login.jsp");
-        page.setRedirecet(true);
+        page.setRedirect(true);
         return new Page();
     }
 }

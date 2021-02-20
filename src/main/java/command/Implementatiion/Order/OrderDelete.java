@@ -14,7 +14,7 @@ public class OrderDelete implements Command {
     public Page execute(HttpServletRequest request) throws ServiceException {
         orderService.delete();
         page.setUrl("welcome.jsp");
-        page.setRedirecet(true);
+        page.setRedirect(true);
         return new Page();
     }
 }

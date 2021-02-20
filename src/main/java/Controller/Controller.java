@@ -1,13 +1,9 @@
 package Controller;
 
-import DAO.Implementation.AccountDAO;
 import Services.Implementation.AccountService;
 import command.Command;
 import command.Factory;
 import command.Page;
-import entities.Account;
-import entities.enums.UserType;
-import exceptions.DaoException;
 import exceptions.ServiceException;
 
 import javax.servlet.RequestDispatcher;
@@ -15,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -37,7 +32,7 @@ private AccountService accountService=new AccountService();
        Command command =factory.getCommand(commandType);
         try {
             Page page = command.execute(req);
-            if (page.isRedirecet()){
+            if (page.isRedirect()){
                 doRedirect(req,resp,page.getUrl());
             }else {doForward(req,resp,page.getUrl());}
         }catch (ServiceException e){

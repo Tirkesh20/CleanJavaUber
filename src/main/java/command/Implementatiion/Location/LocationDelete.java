@@ -14,7 +14,7 @@ public class LocationDelete implements Command {
         Page page=new Page();
         locationService.delete();
         page.setUrl("index.jsp");
-        page.setRedirecet(false);
+        page.setRedirect(false);
         return page;
     }
 }

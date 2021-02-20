@@ -20,31 +20,22 @@
         <div class="w3-container w3-light-blue">
             <h2>Clients waiting</h2>
         </div>
-        <c:if test="${( not empty sessionScope.clientsWaiting)}">
-        <c:forEach var="l" items="${sessionScope.clientsWaiting}">
-        <form action="/uber" method="post">
+        <c:forEach var="l" items="${sessionScope.orderList}">
+        <form action="${pageContext.request.contextPath}/uber" method="post">
+            <c:if test="${l.status == 'ACCEPTED'}">
             <div>
-                <p> ${l.toString()}   <input type="submit" name="command" value="accept"  /></p>
+                <input type="hidden"  name="command" value="client_accept"  />
+                <input type="hidden"  name="client_accept" value="${l.id}"  />
+                <p> ${l.toString()}   <input type="submit" value="accept"  /></p>
+                </c:if>
             </div>
             </c:forEach>
-            </c:if>
         </form>
-        <c:if test="${(sessionScope.orderList !=null)}">
+        <c:if test="${(sessionScope.orderList ==null)}">
             <div>
-                <c:forEach var="l" items="${sessionScope.orderList}">
-                <form action="${pageContext.request.contextPath}/uber" method="post">
-                    <c:if test="${l.status == 'ACCEPTED'}">
-                    <input type="hidden"  name="command" value="client_accept"  />
-
-                    <input type="hidden"  name="client_accept" value="${l.id}"  />
-                    <div>
-                        <p> ${l.toString()}   <input type="submit" value="accept"  /></p>
-                        </c:if>
-                    </div>
-                    </c:forEach>
+               <p>wait please</p>
             </div>
         </c:if>
-
     </div>
 </div>
 

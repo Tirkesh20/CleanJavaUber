@@ -24,7 +24,7 @@ public abstract class DAO<T> {
     }
     public abstract List<T> select() throws DaoException;
 
-    public List<T> selectClient() throws DaoException {
+    public List<T> selectByClientId(long id) throws DaoException {
         return null;
     }
 

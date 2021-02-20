@@ -17,7 +17,7 @@ public class LocationUpdate implements Command {
         HttpSession session= request.getSession();
         Location location=(Location) session.getAttribute("lo");
         locationService.update(location);
-        page.setRedirecet(true);
+        page.setRedirect(true);
         page.setUrl("");
 
         return new Page();

@@ -18,8 +18,8 @@ public class OrderRead implements Command {
         HttpSession session=request.getSession();
         List<Order> orderList=orderService.read();
         session.setAttribute("orderList",orderList);
-        page.setRedirecet(true);
-        page.setUrl("taxiAvailable.jsp");
-        return new Page();
+        page.setRedirect(true);
+        page.setUrl("clientReq.jsp");
+        return page;
     }
 }

@@ -23,24 +23,24 @@
         <div>
             <c:forEach var="l" items="${sessionScope.orderList}">
 
-            <form action="${pageContext.request.contextPath}/uber" method="post">
+                <form action="${pageContext.request.contextPath}/uber" method="post">
 
-                <div>
-                    <p> ${l.toString()}
-                        <input type="hidden"  name="command" value="taxi_accept"  />
-                        <input type="hidden"  name="taxiAcceptOrderId" value="${l.id}"  />
-                        <c:if test="${l.status=='WAITING'}">
-                        <input type="submit" value="accept"  /></p>
-                         </c:if>
-                    <c:if test="${l.status == 'CLIENT_ACCEPTED'}">
-                        <input type="hidden"  name="command" value="taxi_confirm"  />
-                        <input type="hidden"  name="taxiConfirmId" value="${l.id}"  />
-                        <input type="submit" value="Confirm"  /></p>
-                    </c:if>
-                </div>
+                    <div>
+                        <p> ${l.toString()}
+                            <c:if test="${l.status=='WAITING'}">
+                            <input type="hidden"  name="command" value="taxi_accept"  />
+                            <input type="hidden"  name="taxiAcceptOrderId" value="${l.id}"  />
+                            <input type="submit" value="accept"  /></p>
+                        </c:if>
+                        <c:if test="${l.status == 'CLIENT_ACCEPTED'}">
+                            <input type="hidden"  name="command" value="taxi_confirm"  />
+                            <input type="hidden"  name="taxiConfirmId" value="${l.id}"  />
+                            <input type="submit" value="Confirm"  /></p>
+                        </c:if>
+                    </div>
                 </form>
-                </c:forEach>
-                </c:if>
+            </c:forEach>
+            </c:if>
         </div>
 
     </div>

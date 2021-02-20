@@ -9,6 +9,8 @@ public class Home implements Command{
     public Page execute(HttpServletRequest request) throws ServiceException {
 Page page=new Page();
 homeCommand();
+page.setRedirect(true);
+page.setUrl("main.jsp");
         return page;
     }
     public void homeCommand(){

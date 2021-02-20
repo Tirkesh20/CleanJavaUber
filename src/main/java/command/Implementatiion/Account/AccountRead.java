@@ -9,8 +9,6 @@ import entities.enums.UserType;
 import exceptions.ServiceException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AccountRead  implements Command {
     private final AccountService accountService=new AccountService();
@@ -19,7 +17,7 @@ public class AccountRead  implements Command {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         Page page=new Page();
-        page.setRedirecet(false);
+        page.setRedirect(false);
         Account account = accountService.checkService(username, password);
         if (account != null){
            HttpSession session=request.getSession();

@@ -3,7 +3,6 @@ package command.Implementatiion.Order;
 import Services.Implementation.OrderService;
 import command.Command;
 import command.Page;
-import entities.Account;
 import entities.Order;
 import entities.enums.OrderStatus;
 import exceptions.ServiceException;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
-public class clientsWaiting implements Command {
+public class ClientsWaiting implements Command {
     private final OrderService orderService= new OrderService();
     private final Page page=new Page();
 
@@ -33,8 +32,8 @@ public class clientsWaiting implements Command {
                 System.out.println("service error in class ClientAcceptOrder");
             }
         });
-        page.setUrl("orders.jsp");
-        page.setRedirecet(true);
+        page.setUrl("main.jsp");
+        page.setRedirect(true);
         return page;
 
     }

@@ -76,21 +76,21 @@ public class OrderDao extends DAO<Order> {
                 throw new DaoException(e.getMessage());
             }
         }
-    @Override
-    public List<Order> selectClient() throws DaoException {
-        String query = "select * from \"order\" where status=?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, String.valueOf(OrderStatus.WAITING));
-            ResultSet resultSet = stmt.executeQuery();
-            List<Order> orders = new ArrayList<>();
-            while (resultSet.next()) {
-                orders.add(fetchResultSet(resultSet));
-            }
-            return orders;
-        } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
-        }
-    }
+//    @Override
+//    public List<Order> selectClient(long id) throws DaoException {
+//        String query = "select * from \"order\" where client_id=?";
+//        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+//            stmt.setString(1, String.valueOf(OrderStatus.WAITING));
+//            ResultSet resultSet = stmt.executeQuery();
+//            List<Order> orders = new ArrayList<>();
+//            while (resultSet.next()) {
+//                orders.add(fetchResultSet(resultSet));
+//            }
+//            return orders;
+//        } catch (SQLException e) {
+//            throw new DaoException(e.getMessage());
+//        }
+//    }
 
         @Override
         public Order selectById(long id) throws DaoException
@@ -104,13 +104,17 @@ public class OrderDao extends DAO<Order> {
                 throw new DaoException(e.getMessage());
             }
         }
-    public Order selectByClientId(long id) throws DaoException
+    public List<Order> selectByClientId(long id) throws DaoException
     {
         String sql = "select * from \"order\" where client_id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, id);
             ResultSet resultSet = stmt.executeQuery();
-            return (resultSet.next()) ? fetchResultSet(resultSet) : null;
+            List<Order> orders = new ArrayList<>();
+            while (resultSet.next()) {
+                orders.add(fetchResultSet(resultSet));
+            }
+            return  orders;
         } catch (SQLException e) {
             throw new DaoException(e.getMessage());
         }

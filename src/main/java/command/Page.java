@@ -2,15 +2,14 @@ package command;
 
 public class Page {
   private   String Url;
-  private boolean redirecet;
+  private boolean redirect;
 
 
-    public void setRedirecet(boolean redirecet) {
-        this.redirecet = redirecet;
+    public void setRedirect(boolean redirect) {
+        this.redirect = redirect;
     }
-
-    public boolean isRedirecet() {
-        return redirecet;
+    public boolean isRedirect() {
+        return redirect;
     }
 
     public String getUrl() {

@@ -17,7 +17,7 @@ public class AccountCreate implements Command {
         accountService.create(entity);
             Page page=new Page();
             page.setUrl("login.jsp");
-            page.setRedirecet(true);
+            page.setRedirect(true);
             return page;
         }
 
