@@ -1,38 +1,46 @@
 ymaps.ready(init);
-let placemarks=[
+let map;
+let placemarks=
     {
-        latitude:59.67,
-        longitude:27.567444,
-        hintContent:'From location',
-        balloonContent:'Just balloon'
-
-    },
-    {
-        latitude:53.9299587,
-        longitude:27.5876762,
-        hintContent:'From location',
-        balloonContent:'Just balloon'
+        "fromlng":0,
+        "fromlat":0,
+        "tolng":0,
+        "tolat":0,
 
     }
-];
-
+    function elog(ev, object) {
+    placemarks[object.id] =  object.value;
+    console.log(placemarks);
+    initPlacemark(placemarks)
+}
 function init(){
-let map=new ymaps.Map('map',{
+  map=new ymaps.Map('map',{
     center:[53.893009, 27.567444],
     zoom:12,
     control:['zoomControl'],
     behaviors:['drag']
-});
-placemarks.forEach(function (obj){
-    let placemark=new ymaps.Placemark([obj.latitude,obj.longitude],{
-        hintContent:'Shit guys office',
-        balloonContent:'Just balloon'
-    });
-    map.geoObjects.add(placemark)
-});
 
+});
 
 }
+function initPlacemark(loc) {
+    for (let i = 0; i <= 1; i++) {
+        let placemark = new ymaps.Placemark([loc["fromlng"], loc["fromlat"]], {
+                hintContent: 'lol',
+                balloonContent: 'lollll'
+            },
+            {
+                iconLayouts: 'default#image',
+                iconImageHref: 'img/user.png',
+                iconImageSize: [46, 37],
+                iconImageOffset: [-23, -57]
+
+            });
+        map.geoObjects.add(placemark)
+    }
+}
+
+
     
 
 
