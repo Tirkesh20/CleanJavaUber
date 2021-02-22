@@ -12,6 +12,7 @@ let placemarks=
     placemarks[object.id] =  object.value;
     console.log(placemarks);
     initPlacemark(placemarks)
+        initPlacemark2(placemarks)
 }
 function init(){
   map=new ymaps.Map('map',{
@@ -39,7 +40,22 @@ function initPlacemark(loc) {
         map.geoObjects.add(placemark)
     }
 }
+function initPlacemark2(loc) {
+    for (let i = 0; i <= 1; i++) {
+        let placemark2 = new ymaps.Placemark([loc["tolng"], loc["tolat"]], {
+                hintContent: 'lol',
+                balloonContent: 'lollll'
+            },
+            {
+                iconLayouts: 'default#image',
+                iconImageHref: 'img/user.png',
+                iconImageSize: [46, 37],
+                iconImageOffset: [-23, -57]
 
+            });
+        map.geoObjects.add(placemark2)
+    }
+}
 
     
 
