@@ -1,1 +1,2 @@
-# Программа которая являетсья аналогом программы Uber написанная на Java,работает  с базой данных PostgreSql
+Api on jsp providing CRUD functionality ,working with 
+PostgreSql
